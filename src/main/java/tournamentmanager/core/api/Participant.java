@@ -19,7 +19,7 @@ public interface Participant {
      * Retrieve whether the Player was eliminated from the Tournament (ie. has lost a game).
      * If true, then the player cannot play anymore.
      *
-     * @return True if the the Player was eliminated from the Tournament, false otherwise.
+     * @return True if the Player was eliminated from the Tournament, false otherwise.
      */
     boolean isEliminated();
 
