@@ -110,6 +110,9 @@ public class GameImpl implements Game {
         return status;
     }
 
+
+
+
     @Override
     public Optional<Game> getFollowingGame() {
         return Optional.ofNullable(this.followingGame);
@@ -141,6 +144,14 @@ public class GameImpl implements Game {
         }
         this.previousGames.add(game);
     }
-
+    //méthode naive ajouter pour l'observabilité (Ne pas faire n'importe quoi avec)
+    public int GetPoint(Participant p){
+        return this.participants.get(p);
+    }
+    //Méthode naive pour améliorer la controlabilité.
+    //Cette méthode a été ajouté pour les tests, ne pas utiliser autrement
+    public void setStatus( Status s){
+        this.status =s;
+    }
 
 }
