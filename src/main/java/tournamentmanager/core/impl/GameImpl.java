@@ -59,15 +59,11 @@ public class GameImpl implements Game {
         if (scores.get(0).equals(scores.get(1))) {
             throw new TournamentException("Cannot set the game to 'finished', the scores are ex-aequo. A winner is required.");
         }
-
         this.status = Status.FINISHED;
-
         if (this.followingGame != null) {
             this.followingGame.addParticipant(this.getWinner());
         }
         this.getLoser().eliminate();
-
-
     }
 
 
@@ -107,7 +103,6 @@ public class GameImpl implements Game {
         } else {
             return null; //never happens
         }
-
     }
 
     @Override

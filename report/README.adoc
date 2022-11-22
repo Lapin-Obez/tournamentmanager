@@ -1,0 +1,30 @@
+Ce document est une rapport de projet de groupe dans pour le module de test logiciel au sein du master ALMA.
+
+Notre groupe est composé de :
+                                - Valentin Goubon
+                                - Gabriel Pouplin
+                                - Alan Provost
+
+Analyse de la testabilité :
+
+
+Méthode fonctionnelle :
+
+
+Qualité des tests - Couverture du code :
+
+Méthode Structurelle :
+
+
+Qualité des tests - Couverture du code (bis) :
+
+
+Qualité des tests - analyse de mutation :
+
+Elimination des mutants
+
+
+Qualité des tests - analyse de mutation (bis) :
+
+
+Synthèse finale :
