@@ -25,6 +25,16 @@ public class TournamentImpl implements Tournament {
         }
     }
 
+    //Getter pour les tests logiciels
+    public List<Participant> getParticipants(){
+        return this.participants;
+    }
+
+    //Méthode ajouté à des fins de contolabilité, ne surtout pas utiliser autrement
+    public void setStatus( Status s){
+        status = s;
+    }
+
 
     @Override
     public void start() throws TournamentException {

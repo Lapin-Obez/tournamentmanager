@@ -98,7 +98,10 @@ class GameImplTest {
     @Test
     void startException() throws TournamentException {
         assertThrowsExactly(TournamentException.class,()->game.start());
+        //On ajoute deux participant et on passe le status à INPROGRESS
         startGame();
+        assertThrowsExactly(TournamentException.class,()->game.start());
+        game.setStatus(Status.FINISHED);
         assertThrowsExactly(TournamentException.class,()->game.start());
     }
     //Ajout par méthode fonctionnelle
