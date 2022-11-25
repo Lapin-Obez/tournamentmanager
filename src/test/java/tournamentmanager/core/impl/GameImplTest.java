@@ -8,7 +8,6 @@ import tournamentmanager.core.api.Status;
 import tournamentmanager.core.api.TournamentException;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -46,7 +45,7 @@ public class GameImplTest {
         game.addParticipant(p1);
         game.addParticipant(p2);
         List<Participant> li= game.getParticipants();
-        assertTrue(li.size()==2);
+        assertEquals(2, li.size());
         assertTrue(game.getParticipants().contains(p1));
         assertTrue(game.getParticipants().contains(p2));
     }
@@ -57,7 +56,7 @@ public class GameImplTest {
         assertTrue(game.getParticipants().isEmpty());
         game.addParticipant(p1);
         game.addParticipant(p1);
-        assertFalse(game.getParticipants().size()==2);
+        assertNotEquals(2, game.getParticipants().size());
     }
     //Ajout par méthode fonctionnelle
     @Test
@@ -126,7 +125,7 @@ public class GameImplTest {
         p2 = new ParticipantImpl("Margoulin");
         game.addParticipant(p1);
         game.addParticipant(p2);
-        assertTrue(game.getParticipants().size()==2);
+        assertEquals(2, game.getParticipants().size());
         assertTrue(game.getParticipants().contains(p1));
         assertTrue(game.getParticipants().contains(p2));
     }
@@ -173,14 +172,14 @@ public class GameImplTest {
     }
     //Ajout par méthode fonctionnelle
     @Test
-    void getFollowingGame() throws TournamentException {
+    void getFollowingGame() {
         Game g1 = new GameImpl();
         g1.setFollowingGame(game);
         assertEquals(Optional.of(game),g1.getFollowingGame());
     }
     //Ajout par méthode fonctionnelle
     @Test
-    void getFollowingGameFinale() throws TournamentException {
+    void getFollowingGameFinale() {
 
         assertEquals(Optional.empty(),game.getFollowingGame());
     }
