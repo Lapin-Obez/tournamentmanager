@@ -8,11 +8,11 @@ import tournamentmanager.core.api.Status;
 import tournamentmanager.core.api.TournamentException;
 
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class GameImplTest {
+public class GameImplTest {
     GameImpl game;
     Participant p1;
     Participant p2;
@@ -45,7 +45,7 @@ class GameImplTest {
         game.addParticipant(p1);
         game.addParticipant(p2);
         List<Participant> li= game.getParticipants();
-        assertTrue(li.size()==2);
+        assertEquals(2, li.size());
         assertTrue(game.getParticipants().contains(p1));
         assertTrue(game.getParticipants().contains(p2));
     }
@@ -56,7 +56,7 @@ class GameImplTest {
         assertTrue(game.getParticipants().isEmpty());
         game.addParticipant(p1);
         game.addParticipant(p1);
-        assertFalse(game.getParticipants().size()==2);
+        assertNotEquals(2, game.getParticipants().size());
     }
     //Ajout par méthode fonctionnelle
     @Test
@@ -125,7 +125,7 @@ class GameImplTest {
         p2 = new ParticipantImpl("Margoulin");
         game.addParticipant(p1);
         game.addParticipant(p2);
-        assertTrue(game.getParticipants().size()==2);
+        assertEquals(2, game.getParticipants().size());
         assertTrue(game.getParticipants().contains(p1));
         assertTrue(game.getParticipants().contains(p2));
     }
@@ -172,10 +172,16 @@ class GameImplTest {
     }
     //Ajout par méthode fonctionnelle
     @Test
-    void getFollowingGame() throws TournamentException {
+    void getFollowingGame() {
         Game g1 = new GameImpl();
         g1.setFollowingGame(game);
-        assertEquals(game,g1.getFollowingGame());
+        assertEquals(Optional.of(game),g1.getFollowingGame());
+    }
+    //Ajout par méthode fonctionnelle
+    @Test
+    void getFollowingGameFinale() {
+
+        assertEquals(Optional.empty(),game.getFollowingGame());
     }
     //Ajout par méthode fonctionnelle
     @Test
@@ -193,7 +199,7 @@ class GameImplTest {
     void setFollowingGame() {
         Game g1 = new GameImpl();
         game.setFollowingGame(g1);
-        assertEquals(g1,game.getFollowingGame());
+        assertEquals(Optional.of(g1),game.getFollowingGame());
     }
     //Ajout par méthode fonctionnelle
     @Test
