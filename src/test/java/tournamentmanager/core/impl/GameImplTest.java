@@ -9,10 +9,11 @@ import tournamentmanager.core.api.TournamentException;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class GameImplTest {
+public class GameImplTest {
     GameImpl game;
     Participant p1;
     Participant p2;
@@ -175,7 +176,13 @@ class GameImplTest {
     void getFollowingGame() throws TournamentException {
         Game g1 = new GameImpl();
         g1.setFollowingGame(game);
-        assertEquals(game,g1.getFollowingGame());
+        assertEquals(Optional.of(game),g1.getFollowingGame());
+    }
+    //Ajout par méthode fonctionnelle
+    @Test
+    void getFollowingGameFinale() throws TournamentException {
+
+        assertEquals(Optional.empty(),game.getFollowingGame());
     }
     //Ajout par méthode fonctionnelle
     @Test
@@ -193,7 +200,7 @@ class GameImplTest {
     void setFollowingGame() {
         Game g1 = new GameImpl();
         game.setFollowingGame(g1);
-        assertEquals(g1,game.getFollowingGame());
+        assertEquals(Optional.of(g1),game.getFollowingGame());
     }
     //Ajout par méthode fonctionnelle
     @Test

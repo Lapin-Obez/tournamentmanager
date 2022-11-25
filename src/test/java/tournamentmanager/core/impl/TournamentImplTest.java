@@ -2,19 +2,23 @@ package tournamentmanager.core.impl;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tournamentmanager.core.api.Participant;
-import tournamentmanager.core.api.Status;
-import tournamentmanager.core.api.Tournament;
-import tournamentmanager.core.api.TournamentException;
+import tournamentmanager.core.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
-class TournamentImplTest {
+public class TournamentImplTest {
 
     TournamentImpl tournoi;
     @BeforeEach
     void init(){
        tournoi = new TournamentImpl();
+    }
+
+    void ajout2Participant() throws TournamentException {
+        tournoi.addParticipant(new ParticipantImpl("Manuel"));
+        tournoi.addParticipant(new ParticipantImpl("Macheté"));
     }
     //ajout méthode fonctionelle
     @Test
@@ -23,6 +27,7 @@ class TournamentImplTest {
         tournoi.addParticipant(p);
         assertTrue(tournoi.getParticipants().contains(p));
     }
+
     //ajout méthode fonctionelle
     @Test
     void addParticipantExceptionINPROGRESS() {
@@ -81,6 +86,18 @@ class TournamentImplTest {
 
     @Test
     void end() {
+    }
+    //ajout méthode fonctionelle
+    @Test
+    void endExceptionNotStart() {
+        assertThrowsExactly(TournamentException.class,()->tournoi.end());
+    }
+    //ajout méthode fonctionelle
+    @Test
+    void endExceptionGameNOtFinished() throws TournamentException {
+        ajout2Participant();
+        tournoi.start();
+        assertThrowsExactly(TournamentException.class,()->tournoi.end());
     }
 
     @Test

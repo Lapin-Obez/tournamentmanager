@@ -5,7 +5,7 @@ import tournamentmanager.core.api.Participant;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ParticipantImplTest {
+public class ParticipantImplTest {
     Participant personne = new ParticipantImpl("Terracid");
     //Ajout par méthode fonctionnelle
     @Test
@@ -14,8 +14,13 @@ class ParticipantImplTest {
     }
     //Ajout par méthode fonctionnelle
     @Test
-    void isEliminated() {
+    void isEliminatedFalse() {
         assertFalse(personne.isEliminated());
+
+    }
+    //Ajout par méthode fonctionnelle
+    @Test
+    void isEliminatedTrue(){
         personne.eliminate();
         assertTrue(personne.isEliminated());
     }
