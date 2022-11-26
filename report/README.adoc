@@ -40,25 +40,24 @@ La classe TounamentImpl manque d'un Getter pour observer le contenu de participa
                         - scoreP2 : Integer
 
     Les différents statuts de notre domaine d'entrée :
-    C1A : status.NOTSTARTED         C2A : plist vide                                C3A : scoreP1 < scoreP2
-    C1B : status.INPROGRESS         C2B : plist contenant exactement 1 joueur.      C3B : scoreP1 > scoreP2
-    C1C : status.FINISHED           C2C : plist contenant 2 joueurs ou plus.        C3C : scoreP1 = scoreP2
+    C1A : status.NOTSTARTED         C2A : plist vide                                C3A : scoreP1 > scoreP2
+    C1B : status.INPROGRESS         C2B : plist contenant exactement 1 joueur.      C3B : scoreP1 < scoreP2
+    C1C : status.FINISHED           C2C : plist contenant 2 joueurs.                C3C : scoreP1 = scoreP2
 
     Ensuite nous appliquons un base choice coverage avec comme base :
-    C1A     C2C     C3A
+    C1A     C2C     C3A Ne peut pas être testé car si la game est fini elle ne peut pas etre en start
 
-    C1B     C2C     C3A
-    C1C     C2C     C3A
-    C1A     C2A     C3A
-    C1A     C2B     C3A
-    C1A     C2C     C3B
-    C1A     C2C     C3C
+    C1B     C2C     C3A Ne peut pas être testé car si la game est fini elle ne peut pas etre en inProgress
+    C1C     C2C     C3A/
+    C1C     C2A     C3A Ne peut pas être testé car la game ne peut pas start avec 0 joueur
+    C1C     C2B     C3A Ne peut pas être testé car la game ne peut pas start avec 1 joueur
+    C1C     C2C     C3B
+    C1C     C2C     C3C Ne peut pas être testé car on ne peut pas finir la game en cas d'égalité
 
 
 = Qualité des tests - Couverture du code :
 
 = Méthode Structurelle :
-
 
 
 = Qualité des tests - Couverture du code (bis) :
