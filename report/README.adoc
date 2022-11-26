@@ -11,7 +11,7 @@ Il faudrait donc ajouter un Getter pour pouvoir ainsi voir les points d'un joueu
 Pour tester la class GameImpl, il faudarit ajouter un setStatus pour améliorer la controlabilité pendant les tests.
 La classe TounamentImpl manque d'un Getter pour observer le contenu de participants.
 
-= Méthode fonctionnelle :
+== Méthode fonctionnelle :
 
 == Test de la méthode start() de la class GameImpl.java
 
@@ -55,20 +55,23 @@ La classe TounamentImpl manque d'un Getter pour observer le contenu de participa
     C1C     C2C     C3C Ne peut pas être testé car on ne peut pas finir la game en cas d'égalité
 
 
-= Qualité des tests - Couverture du code :
+== Qualité des tests - Couverture du code :
 
-= Méthode Structurelle :
-
-
-= Qualité des tests - Couverture du code (bis) :
+== Méthode Structurelle :
 
 
-= Qualité des tests - analyse de mutation :
-
-= Elimination des mutants
+== Qualité des tests - Couverture du code (bis) :
 
 
-= Qualité des tests - analyse de mutation (bis) :
+== Qualité des tests - analyse de mutation :
+
+== Elimination des mutants
 
 
-= Synthèse finale :
+== Qualité des tests - analyse de mutation (bis) :
+
+
+== Synthèse finale :
+
+    Problèmes identifiés :
+        Dans la class GameImpl, la méthode addParticipant ne répond pas à tous les critères de la spécification. En effet, lors que l'on ajoute un participant déjà présent dans la game on devrait renvoyer une TournamentException or ici on ne remonte aucune information. Ce défaut a été corrigé en ajoutant la conditionnelle suivante : this.participants.containsKey(participant)

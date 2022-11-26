@@ -16,7 +16,7 @@ public class GameImpl implements Game {
         if (participant == null) {
             throw new IllegalArgumentException("The participant cannot be null.");
         }
-        if (this.participants.size() >= 2) {
+        if (this.participants.size() >= 2 || this.participants.containsKey(participant)) {
             throw new TournamentException("Cannot add participant to game, game already has two participants.");
         }
         this.participants.put(participant, 0);
