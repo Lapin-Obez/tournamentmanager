@@ -16,8 +16,8 @@ public class TournamentTreeBuilderImpl implements TournamentTreeBuilder {
         List<Game> nextRound = buildInitialRound(rankedParticipants);
         while (!nextRound.isEmpty()) {
             rounds.add(nextRound);
-            nextRound.clear();
-            nextRound.addAll(buildNextRound(nextRound));
+            //nextRound.clear();
+            nextRound=buildNextRound(nextRound);
         }
         return rounds;
     }

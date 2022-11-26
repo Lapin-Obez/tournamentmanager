@@ -75,3 +75,10 @@ La classe TounamentImpl manque d'un Getter pour observer le contenu de participa
 
     Problèmes identifiés :
         Dans la class GameImpl, la méthode addParticipant ne répond pas à tous les critères de la spécification. En effet, lors que l'on ajoute un participant déjà présent dans la game on devrait renvoyer une TournamentException or ici on ne remonte aucune information. Ce défaut a été corrigé en ajoutant la conditionnelle suivante : this.participants.containsKey(participant)
+
+    Detection d'un bug dans la classe TournamentTreeBuilderImpl. Lors de la construction de l'arbre il était impossible de construire un deuxième niveau car la liste des games étaient effacés avant de construire l'étage suivant. La correction appliquée est la suivant :
+        while (!nextRound.isEmpty()) {
+            rounds.add(nextRound);
+            //nextRound.clear();
+            nextRound=buildNextRound(nextRound);
+        }

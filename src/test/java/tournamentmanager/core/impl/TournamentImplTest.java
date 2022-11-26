@@ -107,6 +107,7 @@ public class TournamentImplTest {
         for (int i =0; i<2;i++){
             for (Game g:matchs) {
                 conccurents = g.getParticipants();
+                g.start();
                 g.addPoints(conccurents.get(0),10);
                 g.finish();
             }
@@ -150,7 +151,7 @@ public class TournamentImplTest {
         tournoi.setStatus(Status.FINISHED);
         assertThrowsExactly(TournamentException.class,()->tournoi.end());
     }
-
+    //ajout méthode fonctionelle
     @Test
     void getAllGames() throws TournamentException {
         tournoi.addParticipant(p1);
@@ -169,51 +170,205 @@ public class TournamentImplTest {
             for (Game g:matchs) {
 
                 conccurents = g.getParticipants();
+                g.start();
                 g.addPoints(conccurents.get(0),10);
                 g.finish();
             }
             matchs = tournoi.getFutureGames();
-            g3 = matchs.get(0);
+            if (i == 0){
+                g3 = matchs.get(0);
+            }
+
         }
         assertTrue(tournoi.getAllGames().contains(g1));
         assertTrue(tournoi.getAllGames().contains(g2));
         assertTrue(tournoi.getAllGames().contains(g3));
     }
 
+
+    //ajout méthode fonctionelle
     @Test
-    void getRounds() {
+    void getRounds() throws TournamentException {
+        tournoi.addParticipant(p1);
+        tournoi.addParticipant(p2);
+        tournoi.addParticipant(p3);
+        tournoi.addParticipant(p4);
+        this.tournoi.start();
+        List<Game> matchs = tournoi.getGamesReadyToStart();
+        List<Participant> conccurents;
+        for (int i =0; i<2;i++){
+            for (Game g:matchs) {
+
+                conccurents = g.getParticipants();
+                g.start();
+                g.addPoints(conccurents.get(0),10);
+                g.finish();
+            }
+            matchs = tournoi.getFutureGames();
+
+        }
+        assertEquals(2,tournoi.getRounds().size());
+        assertEquals(2,tournoi.getRounds().get(0).size());
+        assertEquals(1,tournoi.getRounds().get(1).size());
     }
 
+
+    //ajout méthode fonctionelle
     @Test
-    void getGamesReadyToStart() {
+    void getGamesReadyToStart() throws TournamentException {
+        tournoi.addParticipant(p1);
+        tournoi.addParticipant(p2);
+        tournoi.addParticipant(p3);
+        tournoi.addParticipant(p4);
+        tournoi.start();
+
+        assertEquals(2,tournoi.getGamesReadyToStart().size());
     }
 
+
+    //ajout méthode fonctionelle
     @Test
-    void getFinishedGames() {
+    void getFinishedGames() throws TournamentException {
+        tournoi.addParticipant(p1);
+        tournoi.addParticipant(p2);
+        tournoi.addParticipant(p3);
+        tournoi.addParticipant(p4);
+        this.tournoi.start();
+
+        List<Game> matchs = tournoi.getGamesReadyToStart();
+        List<Participant> conccurents;
+        for (int i =0; i<2;i++){
+            for (Game g:matchs) {
+                conccurents = g.getParticipants();
+                g.start();
+                g.addPoints(conccurents.get(0),10);
+                g.finish();
+            }
+            matchs = tournoi.getFutureGames();
+        }
+        tournoi.end();
+        assertEquals(3,tournoi.getFinishedGames().size());
     }
 
+
+    //ajout méthode fonctionelle
     @Test
-    void getGamesInProgress() {
+    void getGamesInProgress() throws TournamentException {
+        tournoi.addParticipant(p1);
+        tournoi.addParticipant(p2);
+        tournoi.addParticipant(p3);
+        tournoi.addParticipant(p4);
+        this.tournoi.start();
+
+        List<Game> matchs = tournoi.getGamesReadyToStart();
+        List<Participant> conccurents;
+
+        for (Game g:matchs) {
+            conccurents = g.getParticipants();
+            g.start();
+            g.addPoints(conccurents.get(0),10);
+        }
+        assertEquals(2,tournoi.getGamesInProgress().size());
     }
 
+
+    //ajout méthode fonctionelle
     @Test
-    void getFutureGames() {
+    void getFutureGames() throws TournamentException {
+        tournoi.addParticipant(p1);
+        tournoi.addParticipant(p2);
+        tournoi.addParticipant(p3);
+        tournoi.addParticipant(p4);
+        this.tournoi.start();
+
+        List<Game> matchs = tournoi.getGamesReadyToStart();
+        List<Participant> conccurents;
+
+        for (Game g:matchs) {
+            conccurents = g.getParticipants();
+            g.start();
+            g.addPoints(conccurents.get(0),10);
+        }
+        assertEquals(1,tournoi.getFutureGames().size());
     }
 
+
+    //ajout méthode fonctionelle
     @Test
-    void computeFinalRanking() {
+    void computeFinalRanking() throws TournamentException {
+        tournoi.addParticipant(p1);
+        tournoi.addParticipant(p2);
+        tournoi.addParticipant(p3);
+        tournoi.addParticipant(p4);
+        this.tournoi.start();
+
+        List<Game> matchs = tournoi.getGamesReadyToStart();
+        List<Participant> conccurents;
+        for (int i =0; i<2;i++){
+            for (Game g:matchs) {
+                conccurents = g.getParticipants();
+                g.start();
+                g.addPoints(conccurents.get(0),10);
+                g.finish();
+            }
+            matchs = tournoi.getFutureGames();
+        }
+        tournoi.end();
+        assertEquals(3,tournoi.computeFinalRanking().size());
+        assertEquals(1,tournoi.computeFinalRanking().get(0).size());
+        assertEquals(1,tournoi.computeFinalRanking().get(1).size());
+        assertEquals(2,tournoi.computeFinalRanking().get(2).size());
     }
 
+    //ajout méthode fonctionelle
+    @Test
+    void computeFinalRankingExceptionNotEnded() throws TournamentException {
+        tournoi.addParticipant(p1);
+        tournoi.addParticipant(p2);
+        tournoi.addParticipant(p3);
+        tournoi.addParticipant(p4);
+        this.tournoi.start();
+
+        List<Game> matchs = tournoi.getGamesReadyToStart();
+        List<Participant> conccurents;
+        for (int i =0; i<2;i++){
+            for (Game g:matchs) {
+                conccurents = g.getParticipants();
+                g.start();
+                g.addPoints(conccurents.get(0),10);
+                g.finish();
+            }
+            matchs = tournoi.getFutureGames();
+        }
+        assertThrowsExactly(TournamentException.class,()->tournoi.computeFinalRanking());
+    }
+    @Test
+    void computeFinalRankingExceptionNotStarted() throws TournamentException {
+        tournoi.addParticipant(p1);
+        tournoi.addParticipant(p2);
+        tournoi.addParticipant(p3);
+        tournoi.addParticipant(p4);
+        assertThrowsExactly(TournamentException.class,()->tournoi.computeFinalRanking());
+    }
+
+
+    //ajout méthode fonctionelle
     @Test
     void getStatus() {
         assertEquals(Status.NOTSTARTED,tournoi.getStatus());
 
     }
+
+
+    //ajout méthode fonctionelle
     @Test
     void getStatusINPROGRESS() {
         tournoi.setStatus(Status.INPROGRESS);
         assertEquals(Status.INPROGRESS,tournoi.getStatus());
     }
+
+
+    //ajout méthode fonctionelle
     @Test
     void getStatusFINISHED() {
         tournoi.setStatus(Status.FINISHED);
