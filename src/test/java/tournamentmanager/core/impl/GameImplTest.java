@@ -134,8 +134,9 @@ public class GameImplTest {
     //Ajout par méthode fonctionnelle
     @Test
     void finish() throws TournamentException {
-        game = (GameImpl) playGame(game,new ParticipantImpl("Gagnant le grand gagnant"), new ParticipantImpl("Perdant le looser"));
+        game = (GameImpl) playGame(game,p1, p2);
         assertEquals(Status.FINISHED,game.getStatus());
+        assertTrue(p2.isEliminated());
     }
     //Ajout par méthode fonctionnelle
     @Test
