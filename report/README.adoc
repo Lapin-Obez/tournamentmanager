@@ -25,11 +25,18 @@ La classe TounamentImpl manque d'un Getter pour observer le contenu de participa
     C1C : status.FINISHED
 
     Ensuite nous appliquons un base choice coverage avec comme base :
-    C1A     C2A
+    C1A     C2A (Combinaison de base)
 
     C1B     C2A
     C1C     C2A
     C1A     C2B
+
+    Suite de tests complets pour la méthode :
+    Status              this.participants                                 ORACLE
+    status.NOTSTARTED   this.participants.size() = 2                      status.INPROGRESS
+    status.INPROGRESS   this.participants.size() = 2                      TournamentException
+    status.NOTSTARTED   this.participants.size() = 2                      TournamentException
+    status.NOTSTARTED   this.participants.size() = 0                      TournamentException
 
 == Test de la méthode getLoser() de la classe GameImpl.java
 
@@ -53,9 +60,35 @@ La classe TounamentImpl manque d'un Getter pour observer le contenu de participa
     C1C     C2B     C3A Ne peut pas être testé car la game ne peut pas start avec 1 joueur
     C1C     C2C     C3B
     C1C     C2C     C3C Ne peut pas être testé car on ne peut pas finir la game en cas d'égalité
-
-
+    Suite de tests complets pour la méthode :
+    Status              this.participants               score                           ORACLE
+    status.FINISHED     this.participants.size()=2      score p1 =10, score p2 = 0      p2
+    status.FINISHED     this.participants.size()=2      score p1 =0, score p2 = 10      p1
 == Qualité des tests - Couverture du code :
+
+Couverture global du code :
+
+image::CaptureGlobalFonctionelle.png[]
+
+Couverture détaillée des classes :
+
+image::CaptureCouvertureClassesFonctionnelle.png[]
+
+Couverture du TournamentTreeBuilderImpl :
+
+image::TreeBuilderFonctionnelle.png[]
+
+Couverture du GameImpl :
+
+image::GameFonctionnelle.png[]
+
+Couverture du TournamentFonctionnelle :
+
+image::TournamentFonctionnelle.png[]
+
+Couverture du ParticipantImpl :
+
+image::ParticipantFonctionnelle.png[]
 
 == Méthode Structurelle :
 
