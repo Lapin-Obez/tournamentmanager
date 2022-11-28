@@ -95,12 +95,12 @@ image::ParticipantFonctionnelle.png[]
 == Méthode Structurelle :
 
 * Nous avons un premier graphe de flot de contrôle avec la méthode buildAllRounds() de la classe TournamentTreeBuilderImpl.
-image::CFG/buildAllRounds().png[]
-image::CFG/CFG_buildAllRounds().png[]
+image::CFG\buildAllRounds().png[]
+image::CFG\CFG_buildAllRounds().png[]
 
 * Nous avons un deuxième graphe de flot de contrôle avec la méthode computeFinalRanking() de la classe TournamentImpl.
-image::CFG/computeFinalRanking().png[]
-image::CFG/CFG_computeFinalRanking().png[]
+image::CFG\computeFinalRanking().png[]
+image::CFG\CFG_computeFinalRanking().png[]
 
 == Qualité des tests - Couverture du code (bis) :
 
