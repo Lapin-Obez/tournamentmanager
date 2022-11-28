@@ -1,4 +1,6 @@
-Ce document est une rapport de projet de groupe dans pour le module de test logiciel au sein du master ALMA.
+= Rapport de projet
+
+Ce document est un rapport de projet de groupe dans pour le module de test logiciel au sein du master 1 ALMA.
 
 Notre groupe est composé de :
                                 - **Valentin Goubon**
@@ -13,7 +15,7 @@ La classe TounamentImpl manque d'un Getter pour observer le contenu de participa
 
 == Méthode fonctionnelle :
 
-== Test de la méthode start() de la class GameImpl.java
+=== Test de la méthode start() de la class GameImpl.java
 
     Domaine d'entrée :
                         - this.status : de type status
@@ -38,7 +40,7 @@ La classe TounamentImpl manque d'un Getter pour observer le contenu de participa
     status.NOTSTARTED   this.participants.size() = 2                      TournamentException
     status.NOTSTARTED   this.participants.size() = 0                      TournamentException
 
-== Test de la méthode getLoser() de la classe GameImpl.java
+=== Test de la méthode getLoser() de la classe GameImpl.java
 
     Domaine d'entrée :
                         - this.status : de type status
@@ -52,10 +54,10 @@ La classe TounamentImpl manque d'un Getter pour observer le contenu de participa
     C1C : status.FINISHED           C2C : plist contenant 2 joueurs.                C3C : scoreP1 = scoreP2
 
     Ensuite nous appliquons un base choice coverage avec comme base :
-    C1A     C2C     C3A Ne peut pas être testé car si la game est fini elle ne peut pas etre en start
-
-    C1B     C2C     C3A Ne peut pas être testé car si la game est fini elle ne peut pas etre en inProgress
     C1C     C2C     C3A/
+
+    C1A     C2C     C3A Ne peut pas être testé car si la game est fini elle ne peut pas etre en start
+    C1B     C2C     C3A Ne peut pas être testé car si la game est fini elle ne peut pas etre en inProgress
     C1C     C2A     C3A Ne peut pas être testé car la game ne peut pas start avec 0 joueur
     C1C     C2B     C3A Ne peut pas être testé car la game ne peut pas start avec 1 joueur
     C1C     C2C     C3B
@@ -66,32 +68,39 @@ La classe TounamentImpl manque d'un Getter pour observer le contenu de participa
     status.FINISHED     this.participants.size()=2      score p1 =0, score p2 = 10      p1
 == Qualité des tests - Couverture du code :
 
-Couverture global du code :
+=== Couverture global du code :
 
 image::CaptureGlobalFonctionelle.png[]
 
-Couverture détaillée des classes :
+=== Couverture détaillée des classes :
 
 image::CaptureCouvertureClassesFonctionnelle.png[]
 
-Couverture du TournamentTreeBuilderImpl :
+==== Couverture du TournamentTreeBuilderImpl :
 
 image::TreeBuilderFonctionnelle.png[]
 
-Couverture du GameImpl :
+==== Couverture du GameImpl :
 
 image::GameFonctionnelle.png[]
 
-Couverture du TournamentFonctionnelle :
+==== Couverture du TournamentFonctionnelle :
 
 image::TournamentFonctionnelle.png[]
 
-Couverture du ParticipantImpl :
+==== Couverture du ParticipantImpl :
 
 image::ParticipantFonctionnelle.png[]
 
 == Méthode Structurelle :
 
+* Nous avons un premier graphe de flot de contrôle avec la méthode buildAllRounds() de la classe TournamentTreeBuilderImpl.
+image::CFG/buildAllRounds().png[]
+image::CFG/CFG_buildAllRounds().png[]
+
+* Nous avons un deuxième graphe de flot de contrôle avec la méthode computeFinalRanking() de la classe TournamentImpl.
+image::CFG/computeFinalRanking().png[]
+image::CFG/CFG_computeFinalRanking().png[]
 
 == Qualité des tests - Couverture du code (bis) :
 
@@ -106,12 +115,14 @@ image::ParticipantFonctionnelle.png[]
 
 == Synthèse finale :
 
-    Problèmes identifiés :
-        Dans la class GameImpl, la méthode addParticipant ne répond pas à tous les critères de la spécification. En effet, lors que l'on ajoute un participant déjà présent dans la game on devrait renvoyer une TournamentException or ici on ne remonte aucune information. Ce défaut a été corrigé en ajoutant la conditionnelle suivante : this.participants.containsKey(participant)
+    * Problèmes identifiés :
+        Dans la class GameImpl, la méthode addParticipant ne répond pas à tous les critères de la spécification. En effet, lorsqu'on ajoute un participant déjà présent dans la game on devrait renvoyer une TournamentException or ici on ne remonte aucune information. Ce défaut a été corrigé en ajoutant la conditionnelle suivante : this.participants.containsKey(participant)
 
-    Detection d'un bug dans la classe TournamentTreeBuilderImpl. Lors de la construction de l'arbre il était impossible de construire un deuxième niveau car la liste des games étaient effacés avant de construire l'étage suivant. La correction appliquée est la suivant :
+    * Détection d'un bug dans la classe TournamentTreeBuilderImpl. Lors de la construction de l'arbre il était impossible de construire un deuxième niveau car la liste des games étaient effacés avant de construire l'étage suivant. La correction appliquée est la suivant :
+    ```java
         while (!nextRound.isEmpty()) {
             rounds.add(nextRound);
             //nextRound.clear();
             nextRound=buildNextRound(nextRound);
         }
+    ```

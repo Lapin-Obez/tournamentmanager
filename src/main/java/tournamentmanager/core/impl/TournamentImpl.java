@@ -145,7 +145,6 @@ public class TournamentImpl implements Tournament {
             Set<Participant> exaequo = new HashSet<>();
             for (Game game : round) {
                 exaequo.add(game.getLoser());
-
             }
             finalRanking.add(exaequo);
         }
