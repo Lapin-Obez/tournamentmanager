@@ -96,11 +96,15 @@ image::ParticipantFonctionnelle.png[]
 
 * Nous avons un premier graphe de flot de contrôle avec la méthode buildAllRounds() de la classe TournamentTreeBuilderImpl.
 
-image::CFG/buildAllRounds.png[]  image::CFG/CFGbuildAllRounds.png[]
+image::CFG/buildAllRounds.png[]
+
+image::CFG/CFGbuildAllRounds.png[]
 
 * Nous avons un deuxième graphe de flot de contrôle avec la méthode computeFinalRanking() de la classe TournamentImpl.
 
-image::CFG/computeFinalRanking.png[]  image::CFG/CFGcomputeFinalRanking.png[]
+image::CFG/computeFinalRanking.png[]
+
+image::CFG/CFGcomputeFinalRanking.png[]
 
 == Qualité des tests - Couverture du code (bis) :
 
