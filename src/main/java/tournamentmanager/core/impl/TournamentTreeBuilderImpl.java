@@ -24,7 +24,6 @@ public class TournamentTreeBuilderImpl implements TournamentTreeBuilder {
 
     @Override
     public List<Game> buildInitialRound(List<Participant> participants) {
-
         List<Participant> remainingRankedParticipants = new ArrayList<>(participants);
         List<Game> initialRound = new ArrayList<>();
         int amountOfInitialGames = participants.size() / 2;
