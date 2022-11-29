@@ -1,9 +1,11 @@
 package tournamentmanager.core.impl;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import tournamentmanager.core.api.Game;
 import tournamentmanager.core.api.Participant;
+import tournamentmanager.core.api.TournamentException;
 import tournamentmanager.core.api.TournamentTreeBuilder;
 
 import java.util.LinkedList;
@@ -48,6 +50,18 @@ class TournamentTreeBuilderImplTest {
         List<Game> resultat = treeBuilder.buildInitialRound(li);
         assertEquals(2,resultat.size());
     }
+
+    /*
+    @Test
+    void buildInitialRound2() {
+        List<Participant> li =new LinkedList<>();
+        li.add(p1);
+        li.add(p2);
+        li.add(p3);
+        TournamentException t = Assertions.assertThrows(TournamentException.class, () -> {treeBuilder.buildInitialRound(li); } );
+    }
+    */
+
     //Ajout par méthode fonctionnelle
     @Test
     void buildNextRound() {

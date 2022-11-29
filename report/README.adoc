@@ -54,18 +54,20 @@ La classe TounamentImpl manque d'un Getter pour observer le contenu de participa
     C1C : status.FINISHED           C2C : plist contenant 2 joueurs.                C3C : scoreP1 = scoreP2
 
     Ensuite nous appliquons un base choice coverage avec comme base :
-    C1C     C2C     C3A/
+    C1C     C2C     C3A (Combinaison de base)
 
-    C1A     C2C     C3A Ne peut pas être testé car si la game est fini elle ne peut pas etre en start
-    C1B     C2C     C3A Ne peut pas être testé car si la game est fini elle ne peut pas etre en inProgress
-    C1C     C2A     C3A Ne peut pas être testé car la game ne peut pas start avec 0 joueur
-    C1C     C2B     C3A Ne peut pas être testé car la game ne peut pas start avec 1 joueur
+    C1A     C2C     C3A Ne peut pas être testé car si la game est fini elle ne peut pas être en start.
+    C1B     C2C     C3A Ne peut pas être testé car si la game est fini elle ne peut pas être en inProgress.
+    C1C     C2A     C3A Ne peut pas être testé car la game ne peut pas start avec 0 joueur.
+    C1C     C2B     C3A Ne peut pas être testé car la game ne peut pas start avec 1 joueur.
     C1C     C2C     C3B
     C1C     C2C     C3C Ne peut pas être testé car on ne peut pas finir la game en cas d'égalité
+
     Suite de tests complets pour la méthode :
     Status              this.participants               score                           ORACLE
     status.FINISHED     this.participants.size()=2      score p1 =10, score p2 = 0      p2
     status.FINISHED     this.participants.size()=2      score p1 =0, score p2 = 10      p1
+
 == Qualité des tests - Couverture du code :
 
 === Couverture global du code :
@@ -95,13 +97,25 @@ image::CoverageFolder/ParticipantFonctionnelle.png[]
 == Méthode Structurelle :
 Les choix des méthodes ont été fait en fonction de celles qui avaient le pourcentage de couverture des branches la moins élevée de toutes.
 
-* Nous avons un premier graphe de flot de contrôle avec la méthode buildInitialRounds(List) de la classe TournamentTreeBuilderImpl.
+* Nous avons un premier graphe de flot de contrôle avec la méthode _buildInitialRounds(List)_ de la classe TournamentTreeBuilderImpl.
 
 image::CFGfolder/buildInitialRound.png[]
 
 image::CFGfolder/CFGbuildInitialRound.png[]
 
-* Nous avons un deuxième graphe de flot de contrôle avec la méthode getFinishedGames() de la classe TournamentImpl.
+    Jusqu'ici, nous avons tenté de faire une couverture tout chemin afin d'avoir le plus de cas possible à tester.
+    Malheureusement, même si cette méthode de couverture est très efficace, elle l'est beaucoup moins lorsque nous avons des boucles for ou while.
+    En effet, s'il y a _n_ boucles effectués, il y aura alors minimum entre 1 et n différentes combinaisons possibles rien qu'avec cette boucle.
+    Par conséquent, il est judicieux de faire une couverture après un certain nombre de boucles effectués, afin de se rapprocher d'une meilleure couverture.
+    C'est ici le cas avec notre fonction _buildInitialRound()_.
+
+    De plus, nous avons une difficulté supplémentaire ici, nous avons deux mêmes exceptions possibles à suivre (l33 et l34).
+    Par conséquent, savoir laquelle des deux déclenche une exception, si elle est enclenchée, devient une tâche plus ardue.
+
+    Afin de vérifier si la spécification est bien respectée, nous allons donc devoir réaliser les scénarios de tests suivants :
+
+
+* Nous avons un deuxième graphe de flot de contrôle avec la méthode _getFinishedGames()_ de la classe TournamentImpl.
 
 image::CFGfolder/getFinishedGames.png[]
 
