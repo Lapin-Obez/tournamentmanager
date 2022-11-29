@@ -94,12 +94,17 @@ image::CoverageFolder/ParticipantFonctionnelle.png[]
 
 == Méthode Structurelle :
 Les choix des méthodes ont été fait en fonction de celles qui avaient le pourcentage de couverture des branches la moins élevée de toutes.
+
 * Nous avons un premier graphe de flot de contrôle avec la méthode buildInitialRounds(List) de la classe TournamentTreeBuilderImpl.
+
 image::CFGfolder/buildInitialRound.png[]
+
 image::CFGfolder/CFGbuildInitialRound.png[]
 
 * Nous avons un deuxième graphe de flot de contrôle avec la méthode getFinishedGames() de la classe TournamentImpl.
+
 image::CFGfolder/getFinishedGames.png[]
+
 image::CFGfolder/CFGgetFinishedGames.png[]
 
 == Qualité des tests - Couverture du code (bis) :
