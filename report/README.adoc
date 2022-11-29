@@ -70,27 +70,27 @@ La classe TounamentImpl manque d'un Getter pour observer le contenu de participa
 
 === Couverture global du code :
 
-image::CaptureGlobalFonctionelle.png[]
+image::CoverageFolder/CaptureGlobalFonctionelle.png[]
 
 === Couverture détaillée des classes :
 
-image::CaptureCouvertureClassesFonctionnelle.png[]
+image::CoverageFolder/CaptureCouvertureClassesFonctionnelle.png[]
 
 ==== Couverture du TournamentTreeBuilderImpl :
 
-image::TreeBuilderFonctionnelle.png[]
+image::CoverageFolder/TreeBuilderFonctionnelle.png[]
 
 ==== Couverture du GameImpl :
 
-image::GameFonctionnelle.png[]
+image::CoverageFolder/GameFonctionnelle.png[]
 
 ==== Couverture du TournamentFonctionnelle :
 
-image::TournamentFonctionnelle.png[]
+image::CoverageFolder/TournamentFonctionnelle.png[]
 
 ==== Couverture du ParticipantImpl :
 
-image::ParticipantFonctionnelle.png[]
+image::CoverageFolder/ParticipantFonctionnelle.png[]
 
 == Méthode Structurelle :
 
