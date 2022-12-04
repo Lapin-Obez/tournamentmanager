@@ -86,13 +86,15 @@ image::CoverageFolder/TreeBuilderFonctionnelle.png[]
 
 image::CoverageFolder/GameFonctionnelle.png[]
 
-==== Couverture du TournamentFonctionnelle :
+==== Couverture du TournamentImpl :
 
 image::CoverageFolder/TournamentFonctionnelle.png[]
 
 ==== Couverture du ParticipantImpl :
 
 image::CoverageFolder/ParticipantFonctionnelle.png[]
+
+Certaines zones du code ne sont pas couvertes. Cela peut s'expliquer car peut être que ces zone ne peuvent être couverte si on se cantonne à la simple spécification. Il faut pour celà utiliser la méthode structurelle pour explorer toute les branches du code de ce projet.
 
 == Méthode Structurelle :
 Les choix des méthodes ont été fait en fonction de celles qui avaient le pourcentage de couverture des branches la moins élevée de toutes.
@@ -123,6 +125,31 @@ image::CFGfolder/CFGgetFinishedGames.png[]
 
 == Qualité des tests - Couverture du code (bis) :
 
+=== Couverture global du code :
+
+image::CoverageFolder/CaptureGlobalStructurelle.png[]
+
+=== Couverture détaillée des classes :
+
+image::CoverageFolder/CaptureCouvertureDetailleeStructurelle.png[]
+
+==== Couverture du TournamentTreeBuilderImpl :
+
+image::CoverageFolder/TreeBuilderStructurelle.png[]
+
+==== Couverture du GameImpl :
+
+image::CoverageFolder/GameStructurelle.png[]
+
+==== Couverture du TournamentImpl :
+
+image::CoverageFolder/TournamentStructurelle.png[]
+
+==== Couverture du ParticipantImpl :
+
+image::CoverageFolder/ParticipantStructurelle.png[]
+
+On peut expliquer les branches non couvertes par la présence de zone dans le code tout simplement inatteignable et ce peu importe la méthode de test.
 
 == Qualité des tests - analyse de mutation :
 
