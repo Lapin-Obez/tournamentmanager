@@ -127,11 +127,11 @@ image::CFGfolder/CFGgetFinishedGames.png[]
 
 === Couverture global du code :
 
-image::CoverageFolder/CaptureGlobalStructurelle.png[]
+image::CoverageFolder/CaptureGolbalStructurelle.png[]
 
 === Couverture détaillée des classes :
 
-image::CoverageFolder/CaptureCouvertureDetailleeStructurelle.png[]
+image::CoverageFolder/CaptureCouvertureClassesStructurelle.png[]
 
 ==== Couverture du TournamentTreeBuilderImpl :
 

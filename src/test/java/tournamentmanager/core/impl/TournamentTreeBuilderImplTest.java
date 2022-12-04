@@ -74,4 +74,65 @@ class TournamentTreeBuilderImplTest {
         List<Game> resultat = treeBuilder.buildNextRound(premierRound);
         assertEquals(1,resultat.size());
     }
+    //Ajout méthode structurelle
+    @Test
+    void buildAllRoundsStructurel() {
+        List<Participant> li =new LinkedList<>();
+        li.add(p1);
+        li.add(p2);
+        li.add(p3);
+        li.add(p4);
+        List<List<Game>> resultat = treeBuilder.buildAllRounds(li);
+        assertEquals(2,resultat.size());
+    }
+
+    //Ajout méthode structurelle
+    @Test
+    void buildInitialRoundListeImpair() {
+        //Ce cas n'est pas censé être possible à obtenir
+        List li = new LinkedList<>();
+        li.add(p1);
+        li.add(p2);
+        li.add(p3);
+        assertThrowsExactly(RuntimeException.class,()->treeBuilder.buildInitialRound(li));
+    }
+    //Ajout méthode structurelle
+    @Test
+    void buildInitialRoundStructurel() {
+        List<Participant> li =new LinkedList<>();
+        li.add(p1);
+        li.add(p2);
+        li.add(p3);
+        li.add(p4);
+        List<Game> resultat = treeBuilder.buildInitialRound(li);
+        assertEquals(2,resultat.size());
+    }
+
+    //Ajout méthode structurelle
+    @Test
+    void buildNextRoundStructurel() {
+        List<Participant> li =new LinkedList<>();
+        li.add(p1);
+        li.add(p2);
+        li.add(p3);
+        li.add(p4);
+        List<Game> premierRound = treeBuilder.buildInitialRound(li);
+        List<Game> resultat = treeBuilder.buildNextRound(premierRound);
+        assertEquals(1,resultat.size());
+    }
+    /*
+    //Ajout méthode structurelle
+    //Tentative de lancement d'un erreur mais ne créer pas la situation souhaité
+    @Test
+    void buildNextRoundImpair() {
+        List<Participant> li =new LinkedList<>();
+        li.add(p1);
+        li.add(p2);
+        li.add(p3);
+        li.add(p4);
+        li.add(new ParticipantImpl("participant5"));
+        li.add(new ParticipantImpl("participant6"));
+        List<Game> premierRound = treeBuilder.buildInitialRound(li);
+        assertThrowsExactly(RuntimeException.class,()->treeBuilder.buildNextRound(premierRound));
+    }*/
 }
