@@ -74,6 +74,7 @@ class TournamentTreeBuilderImplTest {
         List<Game> resultat = treeBuilder.buildNextRound(premierRound);
         assertEquals(1,resultat.size());
     }
+
     //Ajout méthode structurelle
     @Test
     void buildAllRoundsStructurel() {

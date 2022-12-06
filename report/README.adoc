@@ -10,7 +10,7 @@ Notre groupe est composé de :
 == Analyse de la testabilité :
 Au sein de la classe GameImpl, il n'est pas possible d'avoir accès au point d'un joueur. Il s'agit d'un problème d'observabilité
 Il faudrait donc ajouter un Getter pour pouvoir ainsi voir les points d'un joueur à un instant donné.
-Pour tester la class GameImpl, il faudarit ajouter un setStatus pour améliorer la controlabilité pendant les tests.
+Pour tester la class GameImpl, il faudrait ajouter un setStatus pour améliorer la contrôlabilité pendant les tests.
 La classe TounamentImpl manque d'un Getter pour observer le contenu de participants.
 
 == Méthode fonctionnelle :
@@ -94,7 +94,7 @@ image::CoverageFolder/TournamentFonctionnelle.png[]
 
 image::CoverageFolder/ParticipantFonctionnelle.png[]
 
-Certaines zones du code ne sont pas couvertes. Cela peut s'expliquer car peut être que ces zone ne peuvent être couverte si on se cantonne à la simple spécification. Il faut pour celà utiliser la méthode structurelle pour explorer toute les branches du code de ce projet.
+Certaines zones du code ne sont pas couvertes. Cela peut s'expliquer car peut-être que ces zones ne peuvent être couvertes si on se cantonne à la simple spécification. Il faut pour cela utiliser la méthode structurelle pour explorer toutes les branches du code de ce projet.
 
 == Méthode Structurelle :
 Les choix des méthodes ont été fait en fonction de celles qui avaient le pourcentage de couverture des branches la moins élevée de toutes.
@@ -135,26 +135,47 @@ image::CoverageFolder/CaptureCouvertureClassesStructurelle.png[]
 
 ==== Couverture du TournamentTreeBuilderImpl :
 
+Capture de la couverture des lignes de code ainsi que des branches des différentes méthodes de la classe :
+
 image::CoverageFolder/TreeBuilderStructurelle.png[]
+
+Capture du code de la méthode InitialRound :
+
 image::CoverageFolder/TreeBuilderStructInitialRound.png[]
+
+Capture du code de la méthode NextRound :
+
 image::CoverageFolder/TreeBuilderStructNextRound.png[]
 
 ==== Couverture du GameImpl :
 
+Capture de la couverture des lignes de code ainsi que des branches des différentes méthodes de la classe :
+
 image::CoverageFolder/GameStructurelle.png[]
+
+Capture du code de la méthode getLooser :
+
 image::CoverageFolder/GameStructGetLooser.png[]
 
 ==== Couverture du TournamentImpl :
 
+Capture de la couverture des lignes de code ainsi que des branches des différentes méthodes de la classe :
+
 image::CoverageFolder/TournamentStructurelle.png[]
+
+Capture de la méthode GetAllGames :
+
 image::CoverageFolder/TournamentStructGetAllGames.png[]
+
+Capture de la méthode getFinishedGames :
+
 image::CoverageFolder/TournamentStructGetFinishedGames.png[]
 
 ==== Couverture du ParticipantImpl :
 
 image::CoverageFolder/ParticipantStructurelle.png[]
 
-On peut expliquer les branches non couvertes par la présence de zone dans le code tout simplement inatteignable et ce peu importe la méthode de test.
+On peut expliquer les branches non couvertes par la présence de zone dans le code tout simplement inatteignable, et ce, peu importe la méthode de test.
 
 == Qualité des tests - analyse de mutation :
 
@@ -168,19 +189,38 @@ image::MutationFolder/MutationClassDetailleeAvant.png[]
 
 ==== Mutation du TournamentTreeBuilderImpl :
 
+Capture du code de la méthode initialRound :
+
 image::MutationFolder/TreeBuilderInitialRoundAvant.png[]
+
+Capture du code de la méthode NextRound :
+
 image::MutationFolder/TreeBuilderNextRoundAvant.png[]
+
+Capture des différents mutants qui ont survécu aux tests :
+
 image::MutationFolder/TreeBuilderSurvivantAvant.png[]
 
 ==== Mutation du GameImpl :
 
+Capture du code de la méthode GetWinner :
+
 image::MutationFolder/GameGetWinnerAvant.png[]
+
+Capture du code de la méthode getLooser :
+
 image::MutationFolder/GameGetLooserAvant.png[]
+
+Capture des différents mutants qui ont survécu aux tests :
+
 image::MutationFolder/GameSurvivantAvant.png[]
 
 ==== Mutation du TournamentImpl :
 
 image::MutationFolder/TournamentStartAvant.png[]
+
+Capture des différents mutants qui ont survécu aux tests :
+
 image::MutationFolder/TournamentSurvivantAvant.png[]
 
 ==== Mutation du ParticipantImpl :
