@@ -136,14 +136,19 @@ image::CoverageFolder/CaptureCouvertureClassesStructurelle.png[]
 ==== Couverture du TournamentTreeBuilderImpl :
 
 image::CoverageFolder/TreeBuilderStructurelle.png[]
+image::CoverageFolder/TreeBuilderStructInitialRound.png[]
+image::CoverageFolder/TreeBuilderStructNextRound.png[]
 
 ==== Couverture du GameImpl :
 
 image::CoverageFolder/GameStructurelle.png[]
+image::CoverageFolder/GameStructGetLooser.png[]
 
 ==== Couverture du TournamentImpl :
 
 image::CoverageFolder/TournamentStructurelle.png[]
+image::CoverageFolder/TournamentStructGetAllGames.png[]
+image::CoverageFolder/TournamentStructGetFinishedGames.png[]
 
 ==== Couverture du ParticipantImpl :
 
@@ -152,6 +157,35 @@ image::CoverageFolder/ParticipantStructurelle.png[]
 On peut expliquer les branches non couvertes par la présence de zone dans le code tout simplement inatteignable et ce peu importe la méthode de test.
 
 == Qualité des tests - analyse de mutation :
+
+=== Analyse de mutation globale du code :
+
+image::MutationFolder/MutationGlobaleAvant.png[]
+
+=== Analyse de mutation détaillée des classes :
+
+image::MutationFolder/MutationClassDetailleeAvant.png[]
+
+==== Mutation du TournamentTreeBuilderImpl :
+
+image::MutationFolder/TreeBuilderInitialRoundAvant.png[]
+image::MutationFolder/TreeBuilderNextRoundAvant.png[]
+image::MutationFolder/TreeBuilderSurvivantAvant.png[]
+
+==== Mutation du GameImpl :
+
+image::MutationFolder/GameGetWinnerAvant.png[]
+image::MutationFolder/GameGetLooserAvant.png[]
+image::MutationFolder/GameSurvivantAvant.png[]
+
+==== Mutation du TournamentImpl :
+
+image::MutationFolder/TournamentStartAvant.png[]
+image::MutationFolder/TournamentSurvivantAvant.png[]
+
+==== Mutation du ParticipantImpl :
+
+image::MutationFolder/ParticipantSurivant.png[]
 
 == Elimination des mutants
 
@@ -165,6 +199,7 @@ On peut expliquer les branches non couvertes par la présence de zone dans le co
         Dans la class GameImpl, la méthode addParticipant ne répond pas à tous les critères de la spécification. En effet, lorsqu'on ajoute un participant déjà présent dans la game on devrait renvoyer une TournamentException or ici on ne remonte aucune information. Ce défaut a été corrigé en ajoutant la conditionnelle suivante : this.participants.containsKey(participant)
 
     * Détection d'un bug dans la classe TournamentTreeBuilderImpl. Lors de la construction de l'arbre il était impossible de construire un deuxième niveau car la liste des games étaient effacés avant de construire l'étage suivant. La correction appliquée est la suivant :
+
     ```java
         while (!nextRound.isEmpty()) {
             rounds.add(nextRound);
