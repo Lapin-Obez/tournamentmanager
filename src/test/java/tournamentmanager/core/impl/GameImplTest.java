@@ -381,7 +381,7 @@ public class GameImplTest {
         game.addParticipant(p2);
         game.start();
         game.addPoints(p1,50);
-        assertThrowsExactly(TournamentException.class,()->game.getWinner());
+        assertThrowsExactly(TournamentException.class,()->game.getLoser());
     }
 
 
@@ -394,7 +394,7 @@ public class GameImplTest {
 
         game.addPoints(p2,50);
         game.finish();
-
+        assertNotNull(game.getLoser());
         assertEquals(p1,game.getLoser());
     }
 
@@ -408,7 +408,21 @@ public class GameImplTest {
 
         game.addPoints(p1,50);
         game.finish();
-
+        assertNotNull(game.getLoser());
         assertEquals(p2,game.getLoser());
     }
+
+    //Ajout méthode structurelle
+    @Test
+    void getLoserP2TuerMutant() throws TournamentException {
+        game.addParticipant(p1);
+        game.addParticipant(p2);
+        game.start();
+
+        game.addPoints(p1,50);
+        game.addPoints(p2,50);
+        game.setStatus(Status.FINISHED);
+        assertNull(game.getLoser());
+    }
+
 }

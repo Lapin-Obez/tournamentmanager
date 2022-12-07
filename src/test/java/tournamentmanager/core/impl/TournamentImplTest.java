@@ -477,4 +477,12 @@ public class TournamentImplTest {
         tournoi.end();
         assertEquals(3,tournoi.getFinishedGames().size());
     }
+    //Ajout pour tuer les mutants
+    @Test
+    void startTuerMutant() throws TournamentException {
+        tournoi.addParticipant(p1);
+        tournoi.addParticipant(p2);
+        tournoi.start();
+        assertEquals(Status.INPROGRESS,tournoi.getStatus());
+    }
 }

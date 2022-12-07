@@ -120,6 +120,8 @@ class TournamentTreeBuilderImplTest {
         List<Game> premierRound = treeBuilder.buildInitialRound(li);
         List<Game> resultat = treeBuilder.buildNextRound(premierRound);
         assertEquals(1,resultat.size());
+        assertTrue(resultat.get(0).getPreviousGames().contains(premierRound.get(0)));
+        assertTrue(resultat.get(0).getPreviousGames().contains(premierRound.get(1)));
     }
     /*
     //Ajout méthode structurelle

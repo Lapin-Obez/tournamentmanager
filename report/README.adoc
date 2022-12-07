@@ -94,7 +94,7 @@ image::CoverageFolder/TournamentFonctionnelle.png[]
 
 image::CoverageFolder/ParticipantFonctionnelle.png[]
 
-Certaines zones du code ne sont pas couvertes. Cela peut s'expliquer car peut-être que ces zones ne peuvent être couvertes si on se cantonne à la simple spécification. Il faut pour cela utiliser la méthode structurelle pour explorer toutes les branches du code de ce projet.
+Certaines zones du code ne sont pas couvertes. Cela peut s'expliquer, car peut-être que ces zones ne peuvent être couvertes si on se cantonne à la simple spécification. Il faut pour cela utiliser la méthode structurelle pour explorer toutes les branches du code de ce projet.
 
 == Méthode Structurelle :
 Les choix des méthodes ont été fait en fonction de celles qui avaient le pourcentage de couverture des branches la moins élevée de toutes.
@@ -147,6 +147,8 @@ Capture du code de la méthode NextRound :
 
 image::CoverageFolder/TreeBuilderStructNextRound.png[]
 
+On peut voir que les ligne de code non-couvertes ne sont que des lignes de codes qui ne devraient pas être atteintes.
+
 ==== Couverture du GameImpl :
 
 Capture de la couverture des lignes de code ainsi que des branches des différentes méthodes de la classe :
@@ -156,6 +158,8 @@ image::CoverageFolder/GameStructurelle.png[]
 Capture du code de la méthode getLooser :
 
 image::CoverageFolder/GameStructGetLooser.png[]
+
+Encore une fois, les lignes non-couvertes sont des lignes non atteignables.
 
 ==== Couverture du TournamentImpl :
 
@@ -201,6 +205,8 @@ Capture des différents mutants qui ont survécu aux tests :
 
 image::MutationFolder/TreeBuilderSurvivantAvant.png[]
 
+
+
 ==== Mutation du GameImpl :
 
 Capture du code de la méthode GetWinner :
@@ -222,6 +228,8 @@ image::MutationFolder/TournamentStartAvant.png[]
 Capture des différents mutants qui ont survécu aux tests :
 
 image::MutationFolder/TournamentSurvivantAvant.png[]
+
+Lorsque l'on retire l'appel à la méthode shuffle, on retire simplement le coté aléatoire de la construction des différents rounds. Les joueurs seront mis dans des parties en fonction de leur ordre d'arrivé. Il s'agit d'un mutant équivalent.
 
 ==== Mutation du ParticipantImpl :
 
