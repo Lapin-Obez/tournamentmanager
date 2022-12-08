@@ -229,7 +229,7 @@ Capture des différents mutants qui ont survécu aux tests :
 
 image::MutationFolder/TournamentSurvivantAvant.png[]
 
-Lorsque l'on retire l'appel à la méthode shuffle, on retire simplement le coté aléatoire de la construction des différents rounds. Les joueurs seront mis dans des parties en fonction de leur ordre d'arrivé. Il s'agit d'un mutant équivalent.
+Lorsque l'on retire l'appel à la méthode shuffle, on retire simplement le coté aléatoire de la construction des différents rounds. Les joueurs seront mis dans des parties en fonction de leur ordre d'arrivée. Il s'agit d'un mutant équivalent.
 
 ==== Mutation du ParticipantImpl :
 
@@ -240,6 +240,46 @@ image::MutationFolder/ParticipantSurivant.png[]
 
 == Qualité des tests - analyse de mutation (bis) :
 
+=== Analyse de mutation globale du code :
+
+image::MutationFolder/MutationGlobaleAvant.png[]
+
+=== Analyse de mutation détaillée des classes :
+
+image::MutationFolder/MutationClassDetailleeApres.png[]
+
+==== Mutation du TournamentTreeBuilderImpl :
+
+
+Capture de la liste des différents mutants générés :
+
+image::MutationFolder/TreeBuilderSurvivantApres.png[]
+
+On peut voir dans cette capture que la totalité des mutants générés ont été éliminés par notre suite de test.
+
+==== Mutation du GameImpl :
+
+Capture du code de la méthode GetWinner :
+
+image::MutationFolder/GameGetWinnerApres.png[]
+
+Capture de la liste des différents mutants générés :
+
+image::MutationFolder/GameSurvivantApres.png[]
+
+Le seul mutant survivant est un mutant que nous n'avons pas réussi à éliminer. Pour le résoudre il faudrait modifier le code de la fonction GetWinner. Cependant, le cas concerné par ce mutant n'est pas possible à obtenir sans le forcer en utilisant le setter du status.
+
+==== Mutation du TournamentImpl :
+
+Capture de la méthode start :
+
+image::MutationFolder/TournamentStartAvant.png[]
+
+Capture de la liste des différents mutants générés :
+
+image::MutationFolder/TournamentSurvivantApres.png[]
+
+Pour éliminer le mutant il faudrait envoyer une seed pour forcer la génération, mais il s'agit dans les faits d'un mutant équivalent.
 
 == Synthèse finale :
 

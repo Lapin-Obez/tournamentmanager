@@ -29,6 +29,7 @@ class TournamentTreeBuilderImplTest {
     }
     //Ajout par méthode fonctionnelle
     @Test
+    @AjoutMethodeFonctionnelle
     void buildAllRounds() {
         List<Participant> li =new LinkedList<>();
         li.add(p1);
@@ -41,6 +42,7 @@ class TournamentTreeBuilderImplTest {
 
     //Ajout par méthode fonctionnelle
     @Test
+    @AjoutMethodeFonctionnelle
     void buildInitialRound() {
         List<Participant> li =new LinkedList<>();
         li.add(p1);
@@ -64,6 +66,7 @@ class TournamentTreeBuilderImplTest {
 
     //Ajout par méthode fonctionnelle
     @Test
+    @AjoutMethodeFonctionnelle
     void buildNextRound() {
         List<Participant> li =new LinkedList<>();
         li.add(p1);
@@ -77,6 +80,7 @@ class TournamentTreeBuilderImplTest {
 
     //Ajout méthode structurelle
     @Test
+    @AjoutMethodeStructurelle
     void buildAllRoundsStructurel() {
         List<Participant> li =new LinkedList<>();
         li.add(p1);
@@ -89,6 +93,7 @@ class TournamentTreeBuilderImplTest {
 
     //Ajout méthode structurelle
     @Test
+    @AjoutMethodeStructurelle
     void buildInitialRoundListeImpair() {
         //Ce cas n'est pas censé être possible à obtenir
         List li = new LinkedList<>();
@@ -99,6 +104,7 @@ class TournamentTreeBuilderImplTest {
     }
     //Ajout méthode structurelle
     @Test
+    @AjoutMethodeStructurelle
     void buildInitialRoundStructurel() {
         List<Participant> li =new LinkedList<>();
         li.add(p1);
@@ -111,6 +117,8 @@ class TournamentTreeBuilderImplTest {
 
     //Ajout méthode structurelle
     @Test
+    @AjoutMethodeStructurelle
+    @AjoutMethodeEliminationMutant
     void buildNextRoundStructurel() {
         List<Participant> li =new LinkedList<>();
         li.add(p1);

@@ -32,6 +32,7 @@ public class TournamentImplTest {
     }
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void addParticipant() throws TournamentException {
         Participant p = new ParticipantImpl("nom");
         tournoi.addParticipant(p);
@@ -40,18 +41,21 @@ public class TournamentImplTest {
 
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void addParticipantExceptionINPROGRESS() {
         tournoi.setStatus(Status.INPROGRESS);
         assertThrowsExactly(TournamentException.class,()->tournoi.addParticipant(new ParticipantImpl("nom")));
         }
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void addParticipantExceptionFINISHED() {
        tournoi.setStatus(Status.FINISHED);
         assertThrowsExactly(TournamentException.class,()->tournoi.addParticipant(new ParticipantImpl("nom")));
     }
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void start() throws TournamentException {
         for (int i =0;i<16;i++){
             tournoi.addParticipant(new ParticipantImpl(""+i));
@@ -61,12 +65,14 @@ public class TournamentImplTest {
     }
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void startException1Participant() throws TournamentException {
         tournoi.addParticipant(new ParticipantImpl("nom"));
         assertThrowsExactly(TournamentException.class,()->tournoi.start());
     }
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void startExceptionPasPuissanceDeux() throws TournamentException {
         for (int i =0;i<12;i++){
             tournoi.addParticipant(new ParticipantImpl(""+i));
@@ -76,6 +82,7 @@ public class TournamentImplTest {
     }
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void startExceptionInProgress() throws TournamentException {
         for (int i =0;i<16;i++){
             tournoi.addParticipant(new ParticipantImpl(""+i));
@@ -86,6 +93,7 @@ public class TournamentImplTest {
     }
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void startExceptionFinished() throws TournamentException {
         for (int i =0;i<16;i++){
             tournoi.addParticipant(new ParticipantImpl(""+i));
@@ -95,6 +103,7 @@ public class TournamentImplTest {
     }
     //ajout methode Fonctionnelle
     @Test
+    @AjoutMethodeFonctionnelle
     void end() throws TournamentException {
         tournoi.addParticipant(p1);
         tournoi.addParticipant(p2);
@@ -118,6 +127,7 @@ public class TournamentImplTest {
     }
     //ajout methode Fonctionnelle
     @Test
+    @AjoutMethodeFonctionnelle
     void endExceptionGameNOtFinished() throws TournamentException {
         tournoi.addParticipant(p1);
         tournoi.addParticipant(p2);
@@ -140,11 +150,13 @@ public class TournamentImplTest {
     }
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void endExceptionNotStart() {
         assertThrowsExactly(TournamentException.class,()->tournoi.end());
     }
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void endExceptionGameFINISHED() throws TournamentException {
         tournoi.addParticipant(p1);
         tournoi.addParticipant(p2);
@@ -153,6 +165,7 @@ public class TournamentImplTest {
     }
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void getAllGames() throws TournamentException {
         tournoi.addParticipant(p1);
         tournoi.addParticipant(p2);
@@ -188,6 +201,7 @@ public class TournamentImplTest {
 
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void getRounds() throws TournamentException {
         tournoi.addParticipant(p1);
         tournoi.addParticipant(p2);
@@ -215,6 +229,7 @@ public class TournamentImplTest {
 
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void getGamesReadyToStart() throws TournamentException {
         tournoi.addParticipant(p1);
         tournoi.addParticipant(p2);
@@ -228,6 +243,7 @@ public class TournamentImplTest {
 
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void getFinishedGames() throws TournamentException {
         tournoi.addParticipant(p1);
         tournoi.addParticipant(p2);
@@ -253,6 +269,7 @@ public class TournamentImplTest {
 
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void getGamesInProgress() throws TournamentException {
         tournoi.addParticipant(p1);
         tournoi.addParticipant(p2);
@@ -274,6 +291,7 @@ public class TournamentImplTest {
 
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void getFutureGames() throws TournamentException {
         tournoi.addParticipant(p1);
         tournoi.addParticipant(p2);
@@ -295,6 +313,7 @@ public class TournamentImplTest {
 
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void computeFinalRanking() throws TournamentException {
         tournoi.addParticipant(p1);
         tournoi.addParticipant(p2);
@@ -322,6 +341,7 @@ public class TournamentImplTest {
 
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void computeFinalRankingExceptionNotEnded() throws TournamentException {
         tournoi.addParticipant(p1);
         tournoi.addParticipant(p2);
@@ -343,6 +363,7 @@ public class TournamentImplTest {
         assertThrowsExactly(TournamentException.class,()->tournoi.computeFinalRanking());
     }
     @Test
+    @AjoutMethodeFonctionnelle
     void computeFinalRankingExceptionNotStarted() throws TournamentException {
         tournoi.addParticipant(p1);
         tournoi.addParticipant(p2);
@@ -354,6 +375,7 @@ public class TournamentImplTest {
 
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void getStatus() {
         assertEquals(Status.NOTSTARTED,tournoi.getStatus());
 
@@ -362,6 +384,7 @@ public class TournamentImplTest {
 
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void getStatusINPROGRESS() {
         tournoi.setStatus(Status.INPROGRESS);
         assertEquals(Status.INPROGRESS,tournoi.getStatus());
@@ -370,6 +393,7 @@ public class TournamentImplTest {
 
     //ajout méthode fonctionelle
     @Test
+    @AjoutMethodeFonctionnelle
     void getStatusFINISHED() {
         tournoi.setStatus(Status.FINISHED);
         assertEquals(Status.FINISHED,tournoi.getStatus());
@@ -377,6 +401,7 @@ public class TournamentImplTest {
 
     //ajout méthode structurelle
     @Test
+    @AjoutMethodeStructurelle
     void addParticipantStructurelle() throws TournamentException {
         Participant p = new ParticipantImpl("nom");
         tournoi.addParticipant(p);
@@ -384,6 +409,7 @@ public class TournamentImplTest {
     }
     //ajout méthode structurelle
     @Test
+    @AjoutMethodeStructurelle
     void addParticipantDéjàLà() throws TournamentException {
         Participant p = new ParticipantImpl("nom");
         tournoi.addParticipant(p);
@@ -393,6 +419,7 @@ public class TournamentImplTest {
     }
     //ajout méthode structurelle
     @Test
+    @AjoutMethodeStructurelle
     void addParticipantExceptionNotNotStarted() {
         tournoi.setStatus(Status.INPROGRESS);
         assertThrowsExactly(TournamentException.class,()->tournoi.addParticipant(new ParticipantImpl("nom")));
@@ -400,6 +427,7 @@ public class TournamentImplTest {
 
     //ajout méthode structurelle
     @Test
+    @AjoutMethodeStructurelle
     void getAllGamesStructurelle() throws TournamentException {
         tournoi.addParticipant(p1);
         tournoi.addParticipant(p2);
@@ -434,6 +462,7 @@ public class TournamentImplTest {
 
     //ajout méthode structurelle
     @Test
+    @AjoutMethodeStructurelle
     void getGamesReadyToStartStructurelle() throws TournamentException {
         tournoi.addParticipant(p1);
         tournoi.addParticipant(p2);
@@ -445,6 +474,7 @@ public class TournamentImplTest {
     }
     //ajout méthode structurelle
     @Test
+    @AjoutMethodeStructurelle
     void getGamesReadyToStartGameAlreadyStarted() throws TournamentException {
         tournoi.addParticipant(p1);
         tournoi.addParticipant(p2);
@@ -456,6 +486,7 @@ public class TournamentImplTest {
     }
     //Ajout méthode structurelle
     @Test
+    @AjoutMethodeStructurelle
     void getFinishedGamesStructurelle() throws TournamentException {
         tournoi.addParticipant(p1);
         tournoi.addParticipant(p2);
@@ -479,6 +510,7 @@ public class TournamentImplTest {
     }
     //Ajout pour tuer les mutants
     @Test
+    @AjoutMethodeEliminationMutant
     void startTuerMutant() throws TournamentException {
         tournoi.addParticipant(p1);
         tournoi.addParticipant(p2);
