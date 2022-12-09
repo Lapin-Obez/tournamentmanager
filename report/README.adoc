@@ -287,11 +287,52 @@ Pour éliminer le mutant il faudrait envoyer une seed pour forcer la génératio
         Dans la class GameImpl, la méthode addParticipant ne répond pas à tous les critères de la spécification. En effet, lorsqu'on ajoute un participant déjà présent dans la game on devrait renvoyer une TournamentException or ici on ne remonte aucune information. Ce défaut a été corrigé en ajoutant la conditionnelle suivante : this.participants.containsKey(participant)
 
     * Détection d'un bug dans la classe TournamentTreeBuilderImpl. Lors de la construction de l'arbre il était impossible de construire un deuxième niveau car la liste des games étaient effacés avant de construire l'étage suivant. La correction appliquée est la suivant :
+```java
+while (!nextRound.isEmpty()) {
+    rounds.add(nextRound);
+    //nextRound.clear();
+    nextRound=buildNextRound(nextRound);
+}
+```
 
-    ```java
-        while (!nextRound.isEmpty()) {
-            rounds.add(nextRound);
-            //nextRound.clear();
-            nextRound=buildNextRound(nextRound);
-        }
-    ```
+[cols="1,2,2a"]
+|===
+|  | Nombre de scénario de tests ajoutés à cette étape | Qualité des tests atteinte à la fin de cette étape
+
+|Méthode fonctionnelle
+| 72 ajouts
+|
+* Couverture: 93%
+
+
+|Méthode structurelle
+| 17 ajouts
+|
+* Couverture: 96%
+* Score de mutation: 92%
+
+
+|Élimination des mutants
+| 3 ajouts
+|
+* Couverture: 97%
+* Score de mutation: 98%
+
+==== Conclusion
+
+Avec la méthode fonctionnelle, nous avons pu développer un grand nombre de tests simplement.
+Comme nous avions bien compris la structure de notre code et que les méthodes ne sont pas trop compliquement structurés, cela ne fut pas très difficile pour nous de trouver des méthodes de tests permettant une bonne couverture.
+Ainsi, par le grand nombre d'ajout de tests, nous nous garantissons une excellente couverture rien qu'avec la méthode fonctionnelle, et ce grâce à une grande vérification du respect de la certification de chaque méthode.
+
+Toutefois, nous pouvions la méthode structurelle nous a permi, grâce à une lecture assidue de Jacoco, de trouver quelles pouvaient être les tests possibles à y être ajoutés.
+En effet, la couverture de certaines fonctions de test n'étaient pas forcément suffisante pour pouvoir affirmer que celles-ci sont bonnes.
+Ainsi, nous avons effectuer un graphe de flot de contrôle sur les fonctions dont nous trouvions qu'il n'y avait pas une bonne couverture pour appliquer la méthode structurelle.
+Ce fut notamment le cas pour les fonctions faisant plusieurs tours de boucle.
+Et nous avions pu faire une couverture de mutation par la suite.
+Il faut se méfier des mutants, car cela peut rendre les fonctions défectueuses, en laissant filtrer certaines erreurs.
+
+Pour finir, nous devions donc essayer de gérer au mieux les mutants, en essayant d'avoir le score de mutation le plus élévé possible.
+Même si le notre était déjà très élevé, nous devions faire en sorte de le remonter au plus haut possible.
+Notre score de mutation a pu être amélioré par la suite.
+
+Pour conclure, notre couverture de test ainsi que notre score de mutation sont à +95%. C'est un excellent score, on peut en déduire que notre programme peut être déployé.

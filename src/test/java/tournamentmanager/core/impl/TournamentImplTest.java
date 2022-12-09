@@ -101,7 +101,7 @@ public class TournamentImplTest {
         tournoi.setStatus(Status.FINISHED);
         assertThrowsExactly(TournamentException.class,()->tournoi.start());
     }
-    //ajout methode Fonctionnelle
+    //ajout methode fonctionnelle
     @Test
     @AjoutMethodeFonctionnelle
     void end() throws TournamentException {
@@ -125,7 +125,7 @@ public class TournamentImplTest {
         tournoi.end();
         assertEquals(Status.FINISHED,tournoi.getStatus());
     }
-    //ajout methode Fonctionnelle
+    //ajout methode fonctionnelle
     @Test
     @AjoutMethodeFonctionnelle
     void endExceptionGameNOtFinished() throws TournamentException {
